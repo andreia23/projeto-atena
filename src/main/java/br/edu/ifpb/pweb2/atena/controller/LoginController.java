@@ -1,45 +1,64 @@
 package br.edu.ifpb.pweb2.atena.controller;
 
-import java.io.Serializable;
-import java.util.List;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.edu.ifpb.pweb2.atena.business.model.UsuarioAdmin;
-import br.edu.ifpb.pweb2.atena.business.repository.UsuarioAdminRepository;
-import br.edu.ifpb.pweb2.atena.util.PasswordUtil;
+import br.edu.ifpb.pweb2.atena.business.service.LoginService;
 
-public class LoginController implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Controller
+@RequestMapping("/login")
+public class LoginController {
 
 	@Autowired
-	private UsuarioAdminRepository usuarioAdminRepository;
-	
-	private PasswordUtil passwordUtil;
+	private LoginService loginService;
 
-//	@Transactional
-//	public UsuarioAdmin insert(UsuarioAdmin admin) {
-//		String encrip = (passwordUtil.encryptMD5(admin.getSenha()));
-//		admin.setSenha(encrip);
-//		return usuarioDAO.insert(admin);
-//	}
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView getForm(ModelAndView modelAndView) {
+		modelAndView.setViewName("login/login");
+		modelAndView.addObject("usuario", new UsuarioAdmin());
+		return modelAndView;
+	}
 
-	
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView valide(UsuarioAdmin usuarioAdmin, HttpSession session, ModelAndView modelAndView,
+			RedirectAttributes redirectAttts) {
 
-//	public List<UsuarioAdmin> findAll()
-//	{
-//		return this.usuarioDAO.findAll();
-//	}
+		if (loginService.isValido(usuarioAdmin) == null) {
+			if (loginService.findAll().isEmpty()) {
+				loginService.insert(usuarioAdmin);
+				modelAndView.setViewName("redirect:/home");
+			} else {
+				redirectAttts.addFlashAttribute("mensagem", "Login e/ou senha inválidos!");
+				modelAndView.setViewName("redirect:/login");
+			}
+		}else {
+			session.setAttribute("usuario", usuarioAdmin);
+			modelAndView.setViewName("redirect:/home");
+		}
 
-//	public UsuarioAdmin isValido(String usuario, String senha) {
-//
-//		String encrip = (passwordUtil.encryptMD5(senha));
-//		UsuarioAdmin user = usuarioDAO.findByLogin(usuario);
-//				
-//		if (user == null || !encrip.equals(user.getSenha())) {
-//			user = null;
+//		if ((usuarioAdmin = loginService.isValido(usuarioAdmin)) != null) {
+//			session.setAttribute("usuario", usuarioAdmin);
+//			modelAndView.setViewName("redirect:/home");
+//		} else {
+//			redirectAttts.addFlashAttribute("mensagem", "Login e/ou senha inválidos!");
+//			modelAndView.setViewName("redirect:/login");
 //		}
-//
-//		return user;
-//	}
+		
+		return modelAndView;
+	}
+
+	@RequestMapping("/out")
+	public ModelAndView logout(ModelAndView mav, HttpSession session) {
+		session.invalidate();
+		mav.setViewName("redirect:/login");
+		return mav;
+	}
+
 }
