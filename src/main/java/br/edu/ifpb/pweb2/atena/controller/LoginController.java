@@ -22,14 +22,14 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView getForm(ModelAndView modelAndView) {
 		modelAndView.setViewName("login/login");
-		modelAndView.addObject("usuario", new UsuarioAdmin());
+		modelAndView.addObject("usuarioAdmin", new UsuarioAdmin());
 		return modelAndView;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView valide(UsuarioAdmin usuarioAdmin, HttpSession session, ModelAndView modelAndView,
 			RedirectAttributes redirectAttts) {
-
+		
 		if (loginService.isValido(usuarioAdmin) == null) {
 			if (loginService.findAll().isEmpty()) {
 				loginService.insert(usuarioAdmin);
@@ -39,17 +39,9 @@ public class LoginController {
 				modelAndView.setViewName("redirect:/login");
 			}
 		}else {
-			session.setAttribute("usuario", usuarioAdmin);
+			session.setAttribute("usuarioAdmin", usuarioAdmin);
 			modelAndView.setViewName("redirect:/home");
 		}
-
-//		if ((usuarioAdmin = loginService.isValido(usuarioAdmin)) != null) {
-//			session.setAttribute("usuario", usuarioAdmin);
-//			modelAndView.setViewName("redirect:/home");
-//		} else {
-//			redirectAttts.addFlashAttribute("mensagem", "Login e/ou senha inválidos!");
-//			modelAndView.setViewName("redirect:/login");
-//		}
 		
 		return modelAndView;
 	}
