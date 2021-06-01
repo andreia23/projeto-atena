@@ -1,20 +1,26 @@
 package br.edu.ifpb.pweb2.atena.business.model;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
-//@Entity
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
 public class Aluno implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-//	@Id
-//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private String nome;
 
-//	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 
 	private Integer faltas;
