@@ -24,6 +24,7 @@ public class AlunoService {
 		return this.alunoRepository.findAll();
 	}
 	
+
 	public void updateNotas(Aluno a)
 	{
 		this.alunoRepository.save(a);
@@ -33,6 +34,5 @@ public class AlunoService {
 	{
 		return this.alunoRepository.getById(id);
 	}
-	
 	
 }

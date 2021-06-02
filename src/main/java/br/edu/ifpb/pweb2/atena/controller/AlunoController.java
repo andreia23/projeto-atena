@@ -34,6 +34,7 @@ public class AlunoController {
 		return modelAndView;
 	}
 	
+
 	@RequestMapping("/notas")
 	public ModelAndView getFormNotas(ModelAndView modelAndView) {
 		modelAndView.setViewName("aluno/notas");
@@ -93,4 +94,5 @@ public class AlunoController {
 		
 		return modelAndView;
 	}
+
 }
