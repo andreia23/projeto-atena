@@ -2,7 +2,6 @@ package br.edu.ifpb.pweb2.atena.business.model;
 
 import java.io.Serializable;
 import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

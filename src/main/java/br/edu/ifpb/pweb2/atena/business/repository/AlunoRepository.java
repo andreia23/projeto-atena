@@ -11,7 +11,6 @@ import br.edu.ifpb.pweb2.atena.business.model.Aluno;
 @Repository
 public interface AlunoRepository extends JpaRepository<Aluno, Integer> {
 	
-	@Query("select a from Aluno a")
+	@Query("select a from Aluno a order by a.id")
 	public List<Aluno> findAll();
-	
 }
