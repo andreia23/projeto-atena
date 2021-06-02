@@ -23,7 +23,12 @@ public class AlunoService {
 	{
 		return this.alunoRepository.findAll();
 	}
-	
+
+
+	 public List<Aluno> getAlunos(){
+	        return this.alunoRepository.findAll();
+	    }
+
 	public void salvar(Aluno a)
 	{
 		this.alunoRepository.save(a);
@@ -34,8 +39,10 @@ public class AlunoService {
 		return this.alunoRepository.getById(id);
 	}
 	
+
 	public void deletar(Integer id)
 	{
 		this.alunoRepository.deleteById(id);
 	}
+
 }
