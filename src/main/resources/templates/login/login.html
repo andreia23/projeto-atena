@@ -2,34 +2,48 @@
 <html lang="pt_BR" xmlns:th="www.thymeleaf.org">
 <head>
 <link th:href="@{/css/signin.css}" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 </head>
-<body class="text-center" style="background-color: #f5f5f5;">
+<body class="text-center" style="background-color: #CEDEEA;">
 
-	<form class="form-signin" th:action="@{/login}" method="POST"
+
+    <div class="col container-fluid h-100 d-flex justify-content-center align-items-center" style="background-color: #CEDEEA">
+      <div class="col h-100 p-5">
+      
+        <section class="d-flex justify-content-center align-items-center">
+          <h1 class="mb-3 text-light">Projeto Atena</h1>
+        </section>
+        <section class="col">
+          <div class="w-100 h-100 d-flex justify-content-center align-items-center">
+	<form id="form-container" class="bg-light d-flex align-items-center flex-column w-70 p-5 form-signin" style="border-radius: 20px" th:action="@{/login}" method="POST"
 		th:object=${usuarioAdmin}>
-		<h1 class="h3 mb-3 font-weight-normal">Por favor, autentique-se</h1>
 
 		<div th:if="${not #strings.isEmpty(mensagem)}"
 			th:utext="${mensagem} +'<button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot; aria-label=&quot;Close&quot;><span aria-hidden=&quot;true&quot;>&times;</span></button>'"
 			class="alert alert-danger alert-dismissible fade show" role="alert">
 
 		</div>
-
-		<label for="nome" class="sr-only">nome</label> 
-		<input type="text" class="form-control" placeholder="nome" required 
+<div class="mb-3 w-100" style="color: #868B90">
+		<label for="nome" class="sr-only form-label">Nome</label> 
+		<input type="text" class="form-control" style="border-radius: 20px" required 
 			th:field="*{nome}"> 
-		
-		<label for="senha" class="sr-only">Senha</label>
-		<input type="password" class="form-control" placeholder="Senha"
-			required th:field="*{senha}">
-
+</div>
+<div class="mb-4 w-100" style="color: #868B90">
+		<label for="senha" class="sr-only form-label">Senha</label>
+		<input type="password" class="form-control"
+			required th:field="*{senha}" style="border-radius: 20px">
+</div>
 		<div class="checkbox mb-3">
-			<label> <input type="checkbox" value="lembrar">
+			<label style="color: #868B90"> <input type="checkbox" value="lembrar">
 				Lembrar-me
 			</label>
 		</div>
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+		<button class="mb-4 w-100 btn btn-lg btn-block submit-button text-light" type="submit" style="background-color: #7B8F9E; border-radius: 20px">Entrar</button>
 	</form>
-
+	          </div>
+        </section>
+      </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>
