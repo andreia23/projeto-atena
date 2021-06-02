@@ -25,4 +25,5 @@ public class AlunoService {
 	{
 		return this.alunoRepository.findAll();
 	}
+	
 }
