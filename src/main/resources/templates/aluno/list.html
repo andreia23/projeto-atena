@@ -24,15 +24,15 @@
 				      <td th:text="${aluno.nome}"></td>
 				      <td th:text="${#dates.format(aluno.dataNascimento, 'dd/MM/yyyy')}"></td>
 				      <td>
-				      	<a th:href="@{/aluno/edit/{id}/(id=${aluno.id})}" class="btn btn-secondary">Alterar</a>
-				      	<a th:href="@{/aluno/remove/{id}/(id=${aluno.id})}" class="btn btn-danger">Excluir</a>
+				      	<a th:href="@{/aluno/edit/{id}/(id=${aluno.id})}" class="btn btn-secondary" title="Alterar"><i class="fa fa-pen"></i></a>
+				      	<a th:href="@{/aluno/remove/{id}/(id=${aluno.id})}" class="btn btn-danger" title="Excluir"><i class="fa fa-trash-alt"></i></a>
 				      </td>
 				    </tr>
 			   	  </tbody>
 			    </table>
 			</div>
         <div class="p-3">
-			    <a href="/aluno/new" class="btn btn-block text-light" style="background-color: #7B8F9E; border-radius: 20px; width: 300px">Cadastrar Novo Aluno</a>
+			    <a href="/aluno/new" class="btn btn-block text-light" style="background-color: #7B8F9E; border-radius: 20px; width: 300px"><i class="fa fa-user-plus"></i> Cadastrar Novo Aluno</a>
         </div>
 		</div>
 	 <th:block th:include="fragments/footerinc :: foot"></th:block> 
