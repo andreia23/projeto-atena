@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import br.edu.ifpb.pweb2.atena.business.model.UsuarioAdmin;
 
-@WebFilter(filterName = "LoginFilter", urlPatterns= {"/aluno/*","/home", "/relatorio/*"}) //ADICIONAR AS ROTAS CORRETAS
+@WebFilter(filterName = "LoginFilter", urlPatterns= {"/","/aluno/*","/home", "/relatorio/*"}) //ADICIONAR AS ROTAS CORRETAS
 public class LoginFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -39,8 +39,6 @@ public class LoginFilter implements Filter {
 		} else {
 			redirectLogin(httpRequest, httpResponse, uri);
 		}
-		
-		System.out.println("Filter aqui");
 
 	}
 

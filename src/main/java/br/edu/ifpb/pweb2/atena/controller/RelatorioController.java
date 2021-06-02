@@ -24,7 +24,6 @@ public class RelatorioController {
 	    public ModelAndView relatorio(ModelAndView modelAndView) {
 	        modelAndView.setViewName("relatorio");
 	        List<Aluno> alunos = alunoService.getAlunos();
-	        System.out.println(alunos); 
 	        modelAndView.addObject("alunos", alunos);
 
 	        return modelAndView;
