@@ -25,5 +25,8 @@ public class AlunoService {
 	{
 		return this.alunoRepository.findAll();
 	}
-	
+
+	 public List<Aluno> getAlunos(){
+	        return this.alunoRepository.findAll();
+	    }
 }
