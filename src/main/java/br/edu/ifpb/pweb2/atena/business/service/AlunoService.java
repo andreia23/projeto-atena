@@ -24,7 +24,7 @@ public class AlunoService {
 		return this.alunoRepository.findAll();
 	}
 	
-	public void updateNotas(Aluno a)
+	public void salvar(Aluno a)
 	{
 		this.alunoRepository.save(a);
 	}
@@ -32,6 +32,11 @@ public class AlunoService {
 	public Aluno getById(Integer id)
 	{
 		return this.alunoRepository.getById(id);
+	}
+	
+	public void deletar(Integer id)
+	{
+		this.alunoRepository.deleteById(id);
 	}
 	
 	

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt_BR" xmlns:th="www.thymeleaf.org">
+<head>
+<title>Atena - Alunos</title>
+<th:block th:include="fragments/headerinc :: head"></th:block> 
+</head>
+<body style="background-color: #f5f5f5;">
+
+	 <th:block th:include="fragments/header :: menu"></th:block>
+		<div class="container mt-5 h-100 d-flex flex-column justify-content-center align-items-center">
+			<div class="p-3 bg-white d-flex flex-column justify-content-center align-items-center border-none" style="border-radius: 20px; box-shadow: 1px 1px 10px #888888;">
+				<form th:action="@{/aluno/new}" th:object="${aluno}" method="POST">
+					<input type="hidden" th:field="*{id}" />
+					<div class="mb-3">
+					<label for="nome" class="form-label">Nome</label>
+					  <input type="text" class="form-control" th:field="*{nome}" name="nome" required/>
+					</div>
+					<div class="mb-3">
+					  <label for="dataNasc" class="form-label">Data Nascimento</label>
+					  <input type="date" class="form-control" 
+					  	th:field="*{dataNascimento}" name="dataNasc" placeholder="01/11/1990"
+					  	pattern="\d{1,2}\/\d{1,2}\/\d{4}"/>
+					</div>
+					<button type="submit" class="btn btn-primary" name="salvar">Salvar</button>
+				</form>
+			</div>
+		</div>
+	 <th:block th:include="fragments/footerinc :: foot"></th:block> 
+</body>
+</html>
