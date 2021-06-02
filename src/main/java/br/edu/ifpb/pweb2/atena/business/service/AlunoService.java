@@ -38,6 +38,4 @@ public class AlunoService {
 	{
 		this.alunoRepository.deleteById(id);
 	}
-	
-	
 }
