@@ -30,7 +30,7 @@
 			    </thead>
 			    <tbody >
 			    <tr th:each="aluno: ${alunos}" >
-			    	<th scope="row" th:text="${aluno.id}"></td>
+			    	<th scope="row" th:text="${aluno.id}"></th>
 			    	<td th:text="${aluno.nome}"></td>
 			    	<td th:text="${#dates.format(aluno.dataNascimento, 'dd/MM/yyyy')}"></td>
 			    	<td th:text="${aluno.nota1}"></td>
