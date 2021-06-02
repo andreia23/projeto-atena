@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Aluno implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -20,6 +22,7 @@ public class Aluno implements Serializable {
 	private String nome;
 
 	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dataNascimento;
 
 	private Integer faltas;

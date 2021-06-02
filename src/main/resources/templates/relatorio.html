@@ -7,12 +7,17 @@
     <meta charset="UTF-8">
     <title>Relatório</title>
  
+<th:block th:include="fragments/headerinc :: head"></th:block> 
 </head>
 <body>
 
-<table class="table" th:action="@{/aluno/relatorio}" method="get" th:object="${aluno}">
-    <thead class="thead-dark">
-    <tr>
+	 <th:block th:include="fragments/header :: menu"></th:block>
+	 		<div class="container mt-5 h-100 d-flex flex-column justify-content-center align-items-center text-light">
+			<div class="bg-white p-3 d-flex flex-column justify-content-center align-items-center border-none" style="border-radius: 20px; box-shadow: 1px 1px 10px #888888; width: 800px">
+				
+<table class="table table-striped table-bordered table-light" th:action="@{/aluno/relatorio}" method="get" th:object="${aluno}">
+    <thead>
+    <tr style="color: #868B90">
         <th scope="col">ID</th>
         <th scope="col">Nome</th>
         <th scope="col">Data Nascimento</th>
@@ -24,40 +29,43 @@
     </tr>
     </thead>
     <tbody th:each="aluno: ${alunos}" >
-    <tr>
+    <tr class="text-secondary" >
         <th scope="row">1</th>
         <td th:text="${aluno.nome}"></td>
     </tr>
-    <tr>
+    <tr class="text-secondary" >
         <th scope="row">2</th>
         <td th:text="${aluno.datanascimento}"></td>
     </tr>
     
-      <tr>
+      <tr class="text-secondary" >
         <th scope="row">3</th>
         <td th:text="${aluno.nota1}"></td>
     </tr>
     
-      <tr>
+      <tr class="text-secondary" >
         <th scope="row">4</th>
         <td th:text="${aluno.nota2}"></td>
     </tr>
     
-      <tr>
+      <tr class="text-secondary" >
         <th scope="row">5</th>
         <td th:text="${aluno.nota3}"></td>
     </tr>
-    <tr>
+    <tr class="text-secondary" >
         <th scope="row">6</th>
         <td th:text="${aluno.notaFinal}"></td>
     </tr>
     
-    <tr>
+    <tr class="text-secondary" >
         <th scope="row">7</th>
         <td th:text="${aluno.situacao}"></td>
     </tr>
      
     </tbody>
 </table>
+			</div>
+	 		</div>
+	 <th:block th:include="fragments/footerinc :: foot"></th:block> 
 </body>
 </html>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,7 +35,39 @@ public class AlunoController {
 		return modelAndView;
 	}
 	
-
+	@RequestMapping("/new")
+	public ModelAndView getFormAluno(ModelAndView modelAndView)
+	{
+		modelAndView.setViewName("aluno/form");
+		modelAndView.addObject("aluno", new Aluno());
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/new", params={"salvar"}, method= RequestMethod.POST)
+	public ModelAndView salvarAluno(ModelAndView modelAndView, Aluno a)
+	{
+		modelAndView.setViewName("redirect:/aluno");
+		this.alunoservice.salvar(a);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/edit/{id}")
+	public ModelAndView getFormAlunoEditar(@PathVariable("id") Integer id, ModelAndView modelAndView)
+	{
+		Aluno a = this.alunoservice.getById(id);
+		modelAndView.setViewName("aluno/form");
+		modelAndView.addObject("aluno", a);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value="/remove/{id}")
+	public ModelAndView getFormAlunoRemover(@PathVariable("id") Integer id, ModelAndView modelAndView)
+	{
+		this.alunoservice.deletar(id);
+		modelAndView.setViewName("redirect:/aluno/");
+		return modelAndView;
+	}
+	
 	@RequestMapping("/notas")
 	public ModelAndView getFormNotas(ModelAndView modelAndView) {
 		modelAndView.setViewName("aluno/notas");
@@ -84,7 +117,7 @@ public class AlunoController {
 	                    }
 	                }
 	            }
-				this.alunoservice.updateNotas(a);
+				this.alunoservice.salvar(a);
 			}
 			
 		}catch(Exception e)
