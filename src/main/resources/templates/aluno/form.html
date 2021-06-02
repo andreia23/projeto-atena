@@ -11,20 +11,30 @@
 			<div class="p-3 bg-white d-flex flex-column justify-content-center align-items-center border-none" style="border-radius: 20px; box-shadow: 1px 1px 10px #888888;">
 				<form th:action="@{/aluno/new}" th:object="${aluno}" method="POST">
 					<input type="hidden" th:field="*{id}" />
-					<div class="mb-3">
+					<div class="mb-3" style="color: #868B90">
 					<label for="nome" class="form-label">Nome</label>
-					  <input type="text" class="form-control" th:field="*{nome}" name="nome" required/>
+					  <input type="text" class="form-control" style="border-radius: 20px" th:field="*{nome}" name="nome" required/>
 					</div>
-					<div class="mb-3">
+					<div class="mb-3" style="color: #868B90">
 					  <label for="dataNasc" class="form-label">Data Nascimento</label>
-					  <input type="date" class="form-control" 
+					  <input type="date" class="form-control" style="border-radius: 20px"
 					  	th:field="*{dataNascimento}" name="dataNasc" placeholder="01/11/1990"
 					  	pattern="\d{1,2}\/\d{1,2}\/\d{4}"/>
 					</div>
-					<button type="submit" class="btn btn-primary" name="salvar">Salvar</button>
+         <!-- <div class="mb-4 w-100 d-flex justify-content-center">
+					<button 
+						type="button" 
+						class="mx-0 w-100 btn btn-secondary text-light" 
+						name="salvar" 
+						style="background-color: #7B8F9E; border-radius: 20px; width: 300px">Cancelar</button>
+          </div>-->
+          <div class="mb-4 w-100 d-flex justify-content-center">
+					<button type="submit" class="btn btn-primary" name="salvar" style="border-radius: 20px; width: 300px">Salvar</button>
+          </div>
 				</form>
 			</div>
 		</div>
+		
 	 <th:block th:include="fragments/footerinc :: foot"></th:block> 
 </body>
 </html>
