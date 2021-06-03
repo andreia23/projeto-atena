@@ -19,7 +19,7 @@
 					  <label for="dataNasc" class="form-label">Data Nascimento</label>
 					  <input type="date" class="form-control" style="border-radius: 20px"
 					  	th:field="*{dataNascimento}" name="dataNasc" placeholder="01/11/1990"
-					  	pattern="\d{1,2}\/\d{1,2}\/\d{4}"/>
+					  	required/>
 					</div>
 					<input type="hidden" th:field="*{nota1}" />
 					<input type="hidden" th:field="*{nota2}" />
